@@ -1,0 +1,37 @@
+<?php
+      require 'connect.php';
+
+      $login_username = mysqli_real_escape_string($dbconnect,$_POST['username']);
+      $login_password = mysqli_real_escape_string($dbconnect,$_POST['password']);
+
+      $salt = 'kjbifdjbiorejbkjflkmdbsjbfuirhbrjkn';
+      $hash_login_password = hash_hmac('sha256','$login_password',$salt);
+
+      $sql = " SELECT * FROM `user_login` WHERE Username = ? AND Password = ?";
+      //$query = "SELECT * FROM `member` WHERE Username ='$username' AND Password = '$password'";
+      $stmt = mysqli_prepare($dbconnect, $sql);
+      mysqli_stmt_bind_param($stmt,"ss", $login_username, $hash_login_password);
+      mysqli_execute($stmt);
+      $result_user = mysqli_stmt_get_result($stmt);
+      if ($result_user->num_rows == 1 ) {
+        session_start();
+        $row_user = mysqli_fetch_array($result_user,MYSQLI_ASSOC);
+         $_SESSION['ID_User'] = $row_user['Username'];
+        // header("Location: ../show_store.php");
+        if($row_user["Status"]=='ADMIN'){
+          header("Location: ../admin.php");
+      
+        }
+        
+        if($row_user["Status"]=='USER'){
+          header("Location: ../show_store.php");		
+        }
+      }else {
+        echo "<script>
+          alert('ผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+          location.href = '../login.php';
+        </script>"
+        ;
+      }
+?>
+
