@@ -80,8 +80,9 @@
 <section id="about">
 <div class="container">
 	<div class="text-intro">
-	<h2>About Us</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+	<h2>About</h2>
+		<p>จุดประสงค์หลักของทางเว็บ Check Store สินค้า เป็นเพียงแค่การบริการเพื่ออำนวยความสะดวกสบาย </p>
+    		<p>ให้กับลูกค้าที่มาขายสินค้าในเว็บ check Store สินค้า กับทางเว็บ check Store รวมไปถึงผู้ที่สนใจทั่วไป</p>
 	</div>
 </div>
 </section>
